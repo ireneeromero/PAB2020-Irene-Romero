@@ -2,19 +2,17 @@ package PABFibonacci;
 
 public class Fibonacci {
     
-    public static int computeFibonacci(long value){
-        if(value==0){
-            return 0;
+    public long computeFibonacci(long n, long k){
+        if((n<=0) || (k<=0)){
+            throw new RuntimeException("Deben ser numeros postivios");
         }
-        else if(value==1){
+
+        else if((n==1) || (n==2)){
             return 1;
         }
-        else if(value> 1){
-            return computeFibonacci(value-1) + computeFibonacci(value-2);
-        }
+
         else{
-            System.out.println("Deben ser numeros postivios");
-            return -1;
+            return computeFibonacci(n-1, k) + k*computeFibonacci(n-2, k);
         }
     }
 }

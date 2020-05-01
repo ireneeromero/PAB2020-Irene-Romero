@@ -6,7 +6,7 @@ public class Factorial {
         if (value<0){
             throw new RuntimeException("No se existe el factorial de un número negativo");
         }
-        else if(value > 40){
+        else if(value > 20){
             throw new RuntimeException("Número demasiado grande");
 
         }
