@@ -14,7 +14,7 @@ public class Factorial {
             result = 1;
         }
         else{
-            // Computacionalmente mejor usar un for
+            // Manera anterior con recursividad
             //result = value * compute(value-1);
             result = 1;
             for (int i = 1; i<=value; i++){

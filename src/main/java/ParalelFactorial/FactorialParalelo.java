@@ -17,7 +17,7 @@ public class FactorialParalelo {
         long initTime= System.currentTimeMillis();
 
         factorialValue= numbers
-                .stream()
+                .parallelStream()
                 .map(number -> factorial.compute(number))
                 .collect(Collectors.toList());
 
