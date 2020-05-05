@@ -57,5 +57,12 @@ class FactorialTest {
 
     }
 
+    @Test
+    public void shouldFactorialofAHighNumber(){
+
+        assertThrows(RuntimeException.class, () -> factorial.compute(45) );
+
+    }
+
 
 }
