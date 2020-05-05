@@ -1,17 +1,22 @@
 package PABfactorial;
 
 public class HeavyFactorial extends Factorial{
-    private int numllamadas=0;
-    @Override
-    public long compute(long value) {
-        for (long i = 0; i < 10000000; i++) {
-            double dummy = Math.sin(2.352 + i) * Math.cos(i - 0.235);
-        }
-        numllamadas +=1;
-        return super.compute(value);
+    private long iterations ;
+
+    public HeavyFactorial() {
+        this(10000000) ;
     }
 
-    public int getNumllamadas(){
-        return numllamadas;
+    public HeavyFactorial(long iterations) {
+        this.iterations = iterations ;
+    }
+
+    @Override
+    public long compute(long value) {
+        for (long i = 0 ; i < iterations; i++) {
+            double dummy = Math.sin(2.352 +i) * Math.cos(i - 0.235) ;
+        }
+
+        return super.compute(value) ;
     }
 }

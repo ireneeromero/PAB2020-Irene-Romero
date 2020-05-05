@@ -9,17 +9,28 @@ import java.util.stream.Collectors;
 
 public class FactorialParalelo {
     public static void main(String[] args){
-        List<Integer> numbers= List.of(2, 3, 4, 5 ,6,7, 8, 9, 10, 11, 12, 13);
-        List<Long> factorialValue= new ArrayList<>();
+        List<Integer> numbers= List.of(1,2, 3, 4, 5 ,6,7, 8, 9, 10, 11, 12, 13,14,15,16);
+        List<List<Long>> factorialValue;
 
         HeavyFactorial factorial= new HeavyFactorial();
+        int numberofCoresToUse=4;
+        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelsin", "" + numberofCoresToUse);
+
 
         long initTime= System.currentTimeMillis();
 
-        factorialValue= numbers
-                .parallelStream()
-                .map(number -> factorial.compute(number))
-                .collect(Collectors.toList());
+       factorialValue= numbers
+               .stream()
+               .filter(number -> (number % 2) == 0)
+               .map(number -> {
+                   System.out.println(number) ;
+                   return List.of(Long.valueOf(number), factorial.compute(number)) ;
+               })
+               .collect(Collectors.toList());
+
+
+
+
 
         long totalTime= System.currentTimeMillis() -initTime;
 
@@ -29,7 +40,7 @@ public class FactorialParalelo {
             System.out.println("Number: " + numbers.get(i) + " Factorial: "+ factorialValue.get(i));
         }
 
-        System.out.println("Number of factorial.compute() operations: " + factorial.getNumllamadas()) ;
+     //   System.out.println("Number of factorial.compute() operations: " + factorial.getNumllamadas()) ;
     }
 
 }
