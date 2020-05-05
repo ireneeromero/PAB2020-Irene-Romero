@@ -8,7 +8,7 @@ import java.util.List;
 public class SumNumersFomFile {
     public static void main(String[] args) throws IOException {
         double sum= Files
-                .lines(Paths.get("data/numbers.txt"))
+                .lines(Paths.get("data\numbers.txt"))
                 .parallel()
                 .map(Integer ::valueOf)
                 .reduce(0, (number1, number2) -> number1+number2);
